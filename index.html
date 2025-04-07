@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unlock the Future: Tesla Earnings & Elon's World!</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="tsla.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0F172A;
+            color: #E0F2FE;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        nav {
+            background-color: #1E293B;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #6EE7B7;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        nav ul li a {
+            color: #CBD5E1;
+            text-decoration: none;
+            margin-left: 25px;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #F0FFF4;
+        }
+
+        .hero {
+            background-color: #1E293B;
+            padding: 100px 30px;
+            text-align: left;
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            font-weight: bold;
+            margin-bottom: 25px;
+            color: #6EE7B7;
+        }
+
+        .hero p {
+            font-size: 1.3em;
+            color: #CBD5E1;
+            margin-bottom: 40px;
+            max-width: 700px;
+        }
+
+        .btn-primary {
+            background-color: #6EE7B7;
+            color: #0F172A;
+            border: none;
+            padding: 18px 40px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #86D7B1;
+        }
+
+        .section {
+            padding: 60px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .section-title {
+            font-size: 2.2em;
+            font-weight: bold;
+            color: #F0FFF4;
+            margin-bottom: 20px;
+        }
+
+        .section-content {
+            font-size: 1.1em;
+            color: #CBD5E1;
+            line-height: 1.7;
+            max-width: 550px;
+        }
+
+        .image-box {
+            max-width: 550px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .image-box img {
+            width: 100%;
+            display: block;
+        }
+
+        .info-box {
+            background-color: #27374D;
+            padding: 30px;
+            border-radius: 8px;
+            margin-top: 20px;
+            text-align: left;
+            max-width: 550px;
+        }
+
+        .info-box h3 {
+            color: #A5D8FF;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        .info-box p {
+            color: #CBD5E1;
+            line-height: 1.7;
+        }
+
+        .info-box ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 15px;
+        }
+
+        .info-box ul li {
+            color: #CBD5E1;
+            padding-left: 25px;
+            position: relative;
+            margin-bottom: 10px;
+        }
+
+        .info-box ul li::before {
+            content: '\f058';
+            /* Checkmark icon */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: #6EE7B7;
+            position: absolute;
+            left: 0;
+            top: 2px;
+        }
+
+        .chart-box {
+            background-color: #334155;
+            color: #F0FFF4;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            max-width: 550px;
+            text-align: center;
+            font-style: italic;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 300px;
+            /* Example height */
+        }
+
+        .gift-section {
+            padding: 80px 30px;
+            text-align: center;
+        }
+
+        .gift-box {
+            font-size: 5em;
+            color: #A5D8FF;
+            margin-bottom: 25px;
+        }
+
+        .gift-section p {
+            font-size: 1.2em;
+            color: #CBD5E1;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .earn-section {
+            padding: 80px 30px;
+            background-color: #1E293B;
+            border-top: 1px solid #334155;
+            text-align: center;
+        }
+
+        .earn-info-box {
+            background-color: #27374D;
+            padding: 40px;
+            border-radius: 8px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            text-align: left;
+        }
+
+        .earn-info-box h2 {
+            color: #FDE68A;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .earn-info-box p {
+            color: #CBD5E1;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .coupon-code {
+            background-color: #334155;
+            color: #A7F3D0;
+            padding: 15px 30px;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 25px;
+            display: inline-block;
+        }
+
+        .signup-button {
+            background-color: #FDE68A;
+            color: #713F12;
+            border: none;
+            padding: 18px 40px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease;
+        }
+
+        .signup-button:hover {
+            background-color: #FCD34D;
+        }
+
+        .footer {
+            background-color: #1E293B;
+            color: #CBD5E1;
+            text-align: center;
+            padding: 30px;
+            font-size: 0.9em;
+            border-top: 1px solid #334155;
+        }
+
+        .footer a {
+            color: #A5D8FF;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Media Query for screens smaller than 768px (typical phone screens) */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav ul {
+                margin-top: 10px;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav ul li {
+                margin-left: 0;
+                margin-bottom: 10px;
+            }
+
+            .hero {
+                text-align: center;
+                padding: 80px 20px;
+                /* Adjust padding for smaller screens */
+            }
+
+            .hero h1 {
+                font-size: 2.2em;
+                /* Adjust font size for smaller screens */
+            }
+
+            .hero p {
+                font-size: 1em;
+                /* Adjust font size for smaller screens */
+            }
+
+            .section {
+                flex-direction: column;
+                text-align: center;
+                padding: 40px 20px;
+                /* Adjust padding for smaller screens */
+            }
+
+            .section:nth-child(even) {
+                flex-direction: column;
+            }
+
+            .section>div {
+                width: 100%;
+                margin-bottom: 30px;
+            }
+
+            .image-box {
+                margin-bottom: 30px;
+            }
+
+            .section-title {
+                font-size: 2em;
+                /* Adjust font size for smaller screens */
+            }
+
+            .section-content {
+                font-size: 1em;
+                /* Adjust font size for smaller screens */
+            }
+
+            .info-box {
+                text-align: left;
+                /* Keep left alignment on phones for better readability */
+            }
+
+            .earn-info-box {
+                text-align: left;
+                /* Keep left alignment on phones */
+            }
+
+            .gift-section {
+                padding: 60px 20px;
+                /* Adjust padding for smaller screens */
+            }
+
+            .gift-section p {
+                font-size: 1em;
+                /* Adjust font size for smaller screens */
+            }
+
+            .earn-section {
+                padding: 60px 20px;
+                /* Adjust padding for smaller screens */
+            }
+        }
+
+        /* Media Query for screens larger than 768px (typical laptop screens) */
+        @media (min-width: 769px) and (max-width: 1200px) {
+            .hero {
+                padding: 80px 40px;
+            }
+
+            .hero h1 {
+                font-size: 2.8em;
+            }
+
+            .section {
+                padding: 50px 40px;
+            }
+
+            .section-title {
+                font-size: 2em;
+            }
+
+            .section-content {
+                font-size: 1.05em;
+            }
+
+            nav ul li a {
+                margin-left: 20px;
+                font-size: 1em;
+            }
+        }
+
+        /* Larger laptop screens and desktops will use the default styles */
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="logo"><i class="fab fa-tesla"></i> Tesla Insights</div>
+        <ul>
+            <li><a href="#tesla-earnings"><i class="fas fa-chart-line"></i> Earnings</a></li>
+            <li><a href="#elon-musk"><i class="fas fa-user-tie"></i> Elon Musk</a></li>
+            <li><a href="#free-gift"><i class="fas fa-gift"></i> Gift</a></li>
+            <li><a href="#earn-rewards"><i class="fas fa-coins"></i> Rewards</a></li>
+        </ul>
+    </nav>
+
+    <div class="hero">
+        <h1><i class="fab fa-tesla"></i> Powering the Future: Tesla's Growth & Innovation</h1>
+        <p>Get in-depth analysis of Tesla's financial performance and the latest breakthroughs from the visionary Elon
+            Musk.</p>
+        <a href="#tesla-earnings" class="btn btn-primary"><i class="fas fa-arrow-down"></i> Explore Now</a>
+    </div>
+
+    <div id="tesla-earnings" class="section">
+        <div class="image-box">
+            <img src="chart.jpg" alt="Tesla Earnings Chart">
+        </div>
+        <div>
+            <h2 class="section-title"><i class="fas fa-chart-bar"></i> Tesla Earnings: Decoding the Data</h2>
+            <p class="section-content">Dive into Tesla's quarterly and annual earnings reports. Understand key metrics
+                like revenue, net income, and production numbers that drive their market leadership in electric vehicles
+                and sustainable energy solutions.</p>
+            <div class="info-box">
+                <h3><i class="fas fa-lightbulb"></i> Key Highlights from Recent Reports</h3>
+                <p>Stay informed about significant achievements and figures:</p>
+                <ul>
+                    <li>Record-breaking Revenue Growth <i class="fas fa-arrow-up" style="color: #6EE7B7;"></i></li>
+                    <li>Surge in Electric Vehicle Deliveries <i class="fas fa-car-battery" style="color: #A5D8FF;"></i>
+                    </li>
+                    <li>Expansion and Profitability in Energy Storage <i class="fas fa-bolt"
+                            style="color: #FDE68A;"></i></li>
+                </ul>
+            </div>
+            <div class="chart-box">
+                <i class="fas fa-chart-pie fa-3x"></i> <span style="margin-left: 15px;">[Visualize Key Earnings Data
+                    Here]</span>
+            </div>
+        </div>
+    </div>
+
+    <div id="elon-musk" class="section">
+        <div>
+            <h2 class="section-title"><i class="fas fa-rocket"></i> Elon Musk: Shaping Tomorrow's Technologies</h2>
+            <p class="section-content">Explore the innovative endeavors and bold visions of Elon Musk, the driving force
+                behind Tesla, SpaceX, Neuralink, and The Boring Company. Get insights into his plans for sustainable
+                transport, space exploration, and beyond.</p>
+            <div class="info-box">
+                <h3><i class="fas fa-newspaper"></i> Latest from Elon's World</h3>
+                <p>Discover updates on his various projects and their impact:</p>
+                <ul>
+                    <li>Advancements in Full Self-Driving Technology <i class="fas fa-robot"
+                            style="color: #A7F3D0;"></i></li>
+                    <li>Milestones in Space Exploration and Mars Colonization <i class="fas fa-space-shuttle"
+                            style="color: #F59E0B;"></i></li>
+                    <li>Developments in Brain-Computer Interfaces <i class="fas fa-brain" style="color: #67E8F9;"></i>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="image-box">
+            <img src="elon.jpg" alt="Elon Musk">
+        </div>
+    </div>
+
+    <div id="free-gift" class="gift-section">
+        <h2 class="section-title"><i class="fas fa-gift fa-bounce"></i> Unlock Your Chance for a Tesla Surprise!</h2>
+        <div class="gift-box"><i class="fas fa-box-open"></i></div>
+        <p class="section-content">Enter your email address below for an exclusive opportunity to win a special
+            Tesla-themed gift! Don't miss out on this exciting chance to get closer to the future of innovation.</p>
+        <form style="max-width: 400px; margin: 20px auto;">
+            <div style="display: flex; flex-direction: column;">
+                <input type="email" placeholder="Your Email Address"
+                    style="padding: 15px; border-radius: 8px; border: 1px solid #334155; color: #E0F2FE; background-color: #1E293B; margin-bottom: 10px;">
+                <button type="submit" class="btn btn-primary" style="border-radius: 8px;"><i
+                        class="fas fa-envelope"></i> Sign Up & Win!</button>
+            </div>
+        </form>
+    </div>
+
+    <div id="earn-rewards" class="earn-section">
+        <div class="earn-info-box">
+            <h2 class="section-title"><i class="fas fa-hand-holding-usd"></i> Discover Potential Daily Earnings!</h2>
+            <p>Join our community and explore a unique opportunity to potentially earn around $0.93 USD every day for a
+                month. This opportunity is available worldwide, allowing everyone to participate.</p>
+            <p>To begin, simply sign up on our platform and acquire a $5 USD coupon code. This code will unlock your
+                access to the daily earning potential.</p>
+            <div class="coupon-code"><i class="fas fa-ticket-alt"></i> Your Exclusive $5 Coupon Awaits!</div>
+            <a href="#" class="signup-button"><i class="fas fa-user-plus"></i> Sign Up & Get Your Coupon</a>
+            <p class="mt-3" style="font-size: 0.9em; color: #FDE68A;"><strong>Important:</strong> Please conduct
+                thorough research and fully understand the mechanics and any associated risks before participating in
+                this earning opportunity. Your safety and understanding are our top priorities.</p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2025 Tesla Insights | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        <div>
+            <a href="#" title="Follow us on Twitter" style="color: #A5D8FF;"><i class="fab fa-twitter fa-lg"></i></a>
+            <a href="#" title="Like us on Facebook" style="color: #A5D8FF; margin-left: 15px;"><i
+                    class="fab fa-facebook-f fa-lg"></i></a>
+            <a href="#" title="Connect on LinkedIn" style="color: #A5D8FF; margin-left: 15px;"><i
+                    class="fab fa-linkedin-in fa-lg"></i></a>
+        </div>
+        <script>
+            console.log("Basic Analytics Script Placeholder");
+            // Replace this with your actual analytics script (e.g., Google Analytics)
+        </script>
+    </div>
+
+    <script
+        src="[https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js](https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js)"></script>
+</body>
+<footer>
+    <hr>
+    <p>&copy; 2025 Tesla Earnings. All rights reserved.</p>
+    <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+  </footer>
+</body>
+</html>

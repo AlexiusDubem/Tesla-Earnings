@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tesla Earnings</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="tsla.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* Cool, readable font */
+            background-color: #0F172A;
+            /* Dark, modern background */
+            color: #E0F2FE;
+            /* Light, readable text */
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            /* Nice spacing between lines */
+        }
+
+        .sidebar {
+            background-color: #1E293B;
+            /* Darker sidebar */
+            width: 220px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            padding: 25px;
+            box-sizing: border-box;
+            border-right: 1px solid #334155;
+            /* Subtle separator */
+        }
+
+        .logo {
+            color: #6EE7B7;
+            /* Cool logo color */
+            font-size: 1.8em;
+            font-weight: bold;
+            margin-bottom: 30px;
+            text-align: center;
+            letter-spacing: 0.5px;
+            /* A little space between letters */
+            display: flex;
+            /* To align image and text */
+            align-items: center;
+            /* Vertically align items */
+            justify-content: center;
+            /* Horizontally align items */
+        }
+
+        .logo i {
+            margin-right: 8px;
+        }
+
+        .logo img {
+            max-height: 30px;
+            /* Adjust size as needed */
+            margin-right: 8px;
+            /* Space between logo and text */
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar li a {
+            display: block;
+            color: #CBD5E1;
+            /* Light gray for navigation text */
+            padding: 12px 18px;
+            text-decoration: none;
+            border-radius: 6px;
+            /* Slightly rounded navigation items */
+            margin-bottom: 8px;
+            transition: background-color 0.3s ease;
+            /* Smooth hover effect */
+        }
+
+        .sidebar li a:hover {
+            background-color: #334155;
+            /* Darker on hover */
+            color: #F0FFF4;
+            /* Lighter text on hover */
+        }
+
+        .sidebar li a.active {
+            background-color: #6EE7B7;
+            /* Active link color */
+            color: #0F172A;
+            /* Dark text for active link */
+            font-weight: bold;
+        }
+
+        .sidebar li a i {
+            margin-right: 10px;
+            opacity: 0.8;
+        }
+
+        .container-fluid {
+            padding-left: 240px;
+            /* Make space for the sidebar */
+            padding-top: 30px;
+            padding-right: 30px;
+            box-sizing: border-box;
+        }
+
+        .card {
+            background-color: #1E293B;
+            /* Darker card background */
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            /* Nice shadow for depth */
+        }
+
+        .card h5 {
+            color: #F0FFF4;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+            font-weight: bold;
+        }
+
+        .card p {
+            color: #CBD5E1;
+            font-size: 1em;
+            margin-bottom: 15px;
+        }
+
+        .btn-primary {
+            background-color: #6EE7B7;
+            color: #0F172A;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #86D7B1;
+            /* Slightly lighter on hover */
+        }
+
+        .referral-section {
+            background-color: #27374D;
+            /* Another shade of dark */
+            border-radius: 8px;
+            padding: 25px;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .referral-section h4 {
+            color: #F0FFF4;
+            margin-bottom: 15px;
+            font-size: 1.6em;
+            font-weight: bold;
+        }
+
+        .referral-section h5 {
+            color: #A5D8FF;
+            /* A cool accent color */
+            margin-bottom: 20px;
+            font-size: 1.2em;
+        }
+
+        .referral-code-input {
+            background-color: #1E293B;
+            color: #F0FFF4;
+            border: 1px solid #475569;
+            padding: 12px;
+            border-radius: 6px;
+            margin-right: 10px;
+            font-size: 1em;
+        }
+
+        .steps-card {
+            background-color: #27374D;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+
+        .steps-title {
+            color: #F0FFF4;
+            margin-bottom: 20px;
+            font-size: 1.6em;
+            font-weight: bold;
+        }
+
+        .step-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .step-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #0F172A;
+            /* Dark text on colored background */
+            margin-right: 20px;
+            font-size: 1.2em;
+        }
+
+        .step-details h6 {
+            color: #F0FFF4;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .step-details p {
+            color: #CBD5E1;
+            font-size: 0.95em;
+            margin-bottom: 0;
+        }
+
+        .step-requirement {
+            text-align: right;
+            margin-left: auto;
+        }
+
+        .step-requirement h6 {
+            color: #A5D8FF;
+            font-size: 0.95em;
+            margin-bottom: 5px;
+        }
+
+        .step-requirement p {
+            color: #F0FFF4;
+            font-weight: bold;
+            font-size: 1em;
+            margin-bottom: 0;
+        }
+
+        .bg-primary-step {
+            background-color: #6EE7B7;
+        }
+
+        .bg-success-step {
+            background-color: #A7F3D0;
+            color: #14532D;
+            /* Darker text for light green */
+        }
+
+        .bg-info-step {
+            background-color: #67E8F9;
+            color: #0E7490;
+            /* Darker text for light blue */
+        }
+
+        .bg-warning-step {
+            background-color: #FDE68A;
+            color: #713F12;
+            /* Darker text for yellow */
+        }
+
+        .grid-margin {
+            margin-bottom: 25px;
+        }
+
+        .project-card {
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-card .card-body {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .project-card i {
+            font-size: 2em;
+            margin-bottom: 15px;
+            opacity: 0.8;
+        }
+
+        .card-inverse-primary {
+            background-color: #3B82F6;
+            /* Nice blue */
+            color: #F0F8FF;
+        }
+
+        .card-inverse-warning {
+            background-color: #F59E0B;
+            /* Nice orange */
+            color: #0F172A;
+        }
+
+        .card-inverse-success {
+            background-color: #16A34A;
+            /* Nice green */
+            color: #F0F8FF;
+        }
+
+        .project-card h5 {
+            color: #F0F8FF;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+            font-weight: bold;
+        }
+
+        .project-card p {
+            color: #E0F2FE;
+            font-size: 0.95em;
+            margin-bottom: 10px;
+        }
+
+        .project-card .progress {
+            background-color: #4B5563;
+            border-radius: 6px;
+            height: 8px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+
+        .project-card .progress-bar {
+            background-color: #A5D8FF;
+            border-radius: 6px;
+            height: 8px;
+        }
+
+        .project-card .btn-outline-light {
+            color: #F0F8FF;
+            border-color: #F0F8FF;
+            border-radius: 6px;
+            padding: 8px 16px;
+            font-size: 0.9em;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .project-card .btn-outline-light:hover {
+            background-color: #F0F8FF;
+            color: #3B82F6;
+        }
+
+        .project-card .btn-outline-dark {
+            color: #0F172A;
+            border-color: #0F172A;
+            border-radius: 6px;
+            padding: 8px 16px;
+            font-size: 0.9em;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .project-card .btn-outline-dark:hover {
+            background-color: #0F172A;
+            color: #F59E0B;
+        }
+
+        /* Phone responsiveness! */
+        @media (max-width: 768px) {
+            .sidebar {
+                position: static;
+                width: 100%;
+                margin-bottom: 20px;
+                overflow-x: auto;
+                border-right: none;
+                /* No separator on phone */
+                padding: 15px;
+            }
+
+            .logo {
+                margin-bottom: 20px;
+                font-size: 1.6em;
+            }
+
+            .sidebar ul {
+                display: flex;
+                padding-left: 0;
+            }
+
+            .sidebar li {
+                margin-right: 15px;
+            }
+
+            .container-fluid {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .row {
+                flex-direction: column;
+            }
+
+            .col-sm-3 {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .step-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .step-icon {
+                margin-right: 0;
+                margin-bottom: 10px;
+                width: 40px;
+                height: 40px;
+                font-size: 1.1em;
+            }
+
+            .step-requirement {
+                text-align: left;
+                margin-left: 0;
+                margin-top: 10px;
+            }
+
+            .grid-margin {
+                width: 100%;
+            }
+
+            .project-card .card-body {
+                align-items: stretch;
+                /* Make content fill width on phone */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <center>
+        <h1 id="welcomeMessage">Welcome to Tesla Earnings!</h1>
+        <p>You have successfully logged in.</p>
+    </center>
+
+    <script>
+        const welcomeMessageElement = document.getElementById('welcomeMessage');
+        const username = localStorage.getItem('username');
+
+        if (username) {
+            welcomeMessageElement.textContent = `Welcome back, ${username}!`;
+        }
+
+        Swal.fire({
+            title: `Welcome back, ${username || 'friend'}!`,
+            text: 'You can earn 0.93 dollars daily!',
+            icon: 'success',
+            confirmButtonText: 'Got it!'
+        });
+    </script>
+
+
+    <script>
+        Swal.fire({
+            title: 'Welcome to Tesla Earnings!',
+            text: 'You can earn 0.93 dollars daily!',
+            icon: 'success',
+            confirmButtonText: 'Got it!'
+        });
+    </script>
+    <div class="sidebar">
+        <div class="logo">
+            <img src="tsla.png" alt="Tesla Logo"> Tesla Earnings
+        </div>
+        <ul>
+            <li><a href="#" class="active"><i class="fa fa-tachometer-alt"></i> Dashboard</a></li>
+            <li><a href="#"><i class="fa fa-wallet"></i> Wallet</a></li>
+            <li><a href="#"><i class="fa fa-user"></i> Profile</a></li>
+            <li><a href="#"><i class="fa fa-icons"></i> Icons</a></li>
+        </ul>
+        <div style="margin-top: 30px; text-align: center;">
+            <a href="#" style="color: #CBD5E1; margin-right: 15px;" title="Follow us on Twitter"><i
+                    class="fab fa-twitter fa-lg"></i></a>
+            <a href="#" style="color: #CBD5E1; margin-right: 15px;" title="Like us on Facebook"><i
+                    class="fab fa-facebook-f fa-lg"></i></a>
+            <a href="#" style="color: #CBD5E1; margin-right: 15px;" title="Connect with us on LinkedIn"><i
+                    class="fab fa-linkedin-in fa-lg"></i></a>
+            <a href="#" style="color: #CBD5E1;" title="Check out our Instagram"><i
+                    class="fab fa-instagram fa-lg"></i></a>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="card text-center">
+                    <h5>$150.00</h5>
+                    <p>Total Assets</p>
+                    <button class="btn btn-primary btn-sm">Withdraw</button>
+                    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                    <script>
+                        const withdrawButton = document.querySelector('.btn-primary.btn-sm'); // Find the button
+
+                        withdrawButton.addEventListener('click', function () {
+                            Swal.fire({
+                                title: 'Withdraw Funds',
+                                html: `
+        <div>
+          <label for="accountName">Account Name:</label>
+          <input type="text" id="accountName" class="swal2-input" placeholder="Your Account Name">
+        </div>
+        <div>
+          <label for="accountNumber">Account Number:</label>
+          <input type="number" id="accountNumber" class="swal2-input" placeholder="Your Account Number">
+        </div>
+        <div>
+          <label for="bankName">Bank:</label>
+          <input type="text" id="bankName" class="swal2-input" placeholder="Your Bank Name">
+        </div>
+        <div>
+          <label for="withdrawAmount">Amount to Withdraw ($):</label>
+          <input type="number" id="withdrawAmount" class="swal2-input" placeholder="Amount">
+        </div>
+      `,
+                                showCancelButton: true,
+                                confirmButtonText: 'Enter',
+                                cancelButtonText: 'Cancel',
+                                preConfirm: () => {
+                                    return {
+                                        accountName: document.getElementById('accountName').value,
+                                        accountNumber: document.getElementById('accountNumber').value,
+                                        bankName: document.getElementById('bankName').value,
+                                        withdrawAmount: document.getElementById('withdrawAmount').value
+                                    };
+                                }
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    Swal.fire({
+                                        title: 'Processing...',
+                                        html: 'Your withdrawal is being processed. Please wait...',
+                                        timer: 300000, // 5 minutes in milliseconds
+                                        didOpen: () => {
+                                            Swal.showLoading();
+                                        },
+                                        willClose: () => {
+                                            clearInterval(timerInterval);
+                                        }
+                                    }).then(() => {
+                                        Swal.fire({
+                                            icon: 'error',
+                                            title: 'Network Failed!',
+                                            text: 'Oops! Something went wrong. Please try again later.',
+                                        });
+                                    });
+                                }
+                            });
+                        });
+                    </script>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card text-center">
+                    <h5>$0.00</h5>
+                    <p>Savings</p>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card text-center">
+                    <h5>0</h5>
+                    <p>Referrals</p>
+                </div>
+            </div>
+        </div>
+        <script>
+            const totalAssetsElement = document.querySelector('.col-sm-3:first-child h5');
+            let currentBalance = 0.00;
+            const finalBalance = 0.93;
+            const increment = 0.01; // How much to add each time (you can adjust this)
+            const intervalTime = 1000; // How often to update in milliseconds (1 second)
+
+            function updateBalance() {
+                if (currentBalance < finalBalance) {
+                    currentBalance = parseFloat((currentBalance + increment).toFixed(2)); // Add and keep to 2 decimal places
+                    totalAssetsElement.textContent = '$' + currentBalance;
+                } else {
+                    clearInterval(intervalId); // Stop the counting when it reaches the target
+                    // After a day (in a real scenario, you'd track time differently)
+                    // For demonstration, let's just double it after a short delay
+                    setTimeout(() => {
+                        totalAssetsElement.textContent = '$' + (finalBalance * 2).toFixed(2);
+                    }, 5000); // Wait 5 seconds for demonstration
+                }
+            }
+
+            const intervalId = setInterval(updateBalance, intervalTime);
+        </script>
+
+        <div class="referral-section">
+            <h4>Refer And Earn</h4>
+            <h5>$5.00 Reward per Referral</h5>
+            <p>Referral Code:</p>
+            <div>
+                <input type="text" class="referral-code-input" value="REFERRAL123" readonly id="referralCode">
+                <button class="btn btn-primary btn-sm" id="copyButton">Copy</button>
+            </div>
+        </div>
+
+        <script>
+            const copyButton = document.getElementById('copyButton');
+            const referralCodeInput = document.getElementById('referralCode');
+
+            copyButton.addEventListener('click', function () {
+                // Select the text in the input field
+                referralCodeInput.select();
+                referralCodeInput.setSelectionRange(0, referralCodeInput.value.length); // For mobile browsers
+
+                // Try to copy the selected text to the clipboard
+                try {
+                    document.execCommand('copy');
+
+                    // Optionally, give some feedback to the user that it was copied
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Copied!',
+                        text: 'Referral code copied to clipboard.',
+                        timer: 1500, // Show the message for 1.5 seconds
+                        showConfirmButton: false
+                    });
+                } catch (err) {
+                    console.error('Unable to copy referral code', err);
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Could not copy referral code. Please select and copy manually.',
+                    });
+                }
+
+                // Deselect the input field
+                referralCodeInput.blur();
+            });
+        </script>
+
+        <div class="steps-card">
+            <h4 class="steps-title">Follow These Steps</h4>
+            <p class="text-muted">Share the opportunity, earn rewards</p>
+            <div class="step-item">
+                <div class="step-icon bg-primary-step"><i class="fa fa-money"></i></div>
+                <div class="step-details">
+                    <h6>Reach $1000</h6>
+                    <p>Earn $1000 to unlock referral program</p>
+                </div>
+                <div class="step-requirement">
+                    <h6>Requirement</h6>
+                    <p>$1000</p>
+                </div>
+            </div>
+            <div class="step-item">
+                <div class="step-icon bg-success-step"><i class="fa fa-user"></i></div>
+                <div class="step-details">
+                    <h6>Refer Friends</h6>
+                    <p>Share referral link with friends</p>
+                </div>
+                <div class="step-requirement">
+                    <h6>Earn per referral</h6>
+                    <p>10%</p>
+                    <p class="text-muted">Unlimited referrals</p>
+                </div>
+            </div>
+            <div class="step-item">
+                <div class="step-icon bg-info-step"><i class="fa fa-gift"></i></div>
+                <div class="step-details">
+                    <h6>Earn Rewards</h6>
+                    <p>Get rewards for successful referrals</p>
+                </div>
+                <div class="step-requirement">
+                    <h6>Rewards</h6>
+                    <p>Cash, discounts, offers</p>
+                    <p class="text-muted">Redeem rewards anytime</p>
+                </div>
+            </div>
+            <div class="step-item">
+                <div class="step-icon bg-warning-step"><i class="fa fa-rocket"></i></div>
+                <div class="step-details">
+                    <h6>Become Ambassador</h6>
+                    <p>Reach 10 successful referrals</p>
+                </div>
+                <div class="step-requirement">
+                    <h6>Benefits</h6>
+                    <p>Exclusive benefits & support</p>
+                    <p class="text-muted">Ambassador badge</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-4 grid-margin">
+                <div class="card card-inverse-primary rounded shadow project-card">
+                    <div class="card-body d-flex flex-column align-items-start">
+                        <i class="fas fa-rocket"></i>
+                        <h5>Project Nova</h5>
+                        <div class="row w-100">
+                            <div class="col-8 col-sm-12 col-xl-8 my-auto">
+                                <div class="d-flex d-sm-block d-md-flex align-items-center">
+                                    <h2 class="mb-0">Launching Soon</h2>
+                                </div>
+                                <h6 class="text-muted font-weight-normal small">A revolutionary new social media
+                                    platform that
+                                    connects people through shared interests.</h6>
+                                <p class="text-muted small mt-1"><i class="fas fa-users me-1"></i> Expected Users: 1M+
+                                </p>
+                            </div>
+                            <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
+                                <div class="progress">
+                                    <div class="progress-bar bg-primary progress-bar-striped progress-bar-animated"
+                                        role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                                        style="width: 100%">
+                                        100%
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-outline-light btn-sm mt-3 rounded-pill">Learn More <i
+                                class="fas fa-arrow-right fa-sm ms-1"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4 grid-margin">
+                <div class="card card-inverse-warning rounded shadow project-card">
+                    <div class="card-body d-flex flex-column align-items-start">
+                        <i class="fas fa-brain"></i>
+                        <h5>Zenith AI</h5>
+                        <div class="row w-100">
+                            <div class="col-8 col-sm-12 col-xl-8 my-auto">
+                                <div class="d-flex d-sm-block d-md-flex align-items-center">
+                                    <h2 class="mb-0">Under Development</h2>
+                                </div>
+                                <h6 class="text-muted font-weight-normal small">A cutting-edge AI assistant that can
+                                    help you with
+                                    everything from writing emails to scheduling appointments.</h6>
+                                <p class="text-muted small mt-1"><i class="fas fa-code me-1"></i> Current Stage: Alpha
+                                </p>
+                            </div>
+                            <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
+                                <div class="progress">
+                                    <div class="progress-bar bg-warning progress-bar-striped progress-bar-animated"
+                                        role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"
+                                        style="width: 75%">
+                                        75%
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-outline-dark btn-sm mt-3 rounded-pill">Stay Tuned <i
+                                class="fas fa-clock fa-sm ms-1"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4 grid-margin">
+                <div class="card card-inverse-success rounded shadow project-card">
+                    <div class="card-body d-flex flex-column align-items-start">
+                        <i class="fas fa-atom"></i>
+                        <h5>Quantum Leap</h5>
+                        <div class="row w-100">
+                            <div class="col-8 col-sm-12 col-xl-8 my-auto">
+                                <div class="d-flex d-sm-block d-md-flex align-items-center">
+                                    <h2 class="mb-0">In Development</h2>
+                                </div>
+                                <h6 class="text-muted font-weight-normal small">A groundbreaking new platform for
+                                    learning and
+                                    exploring the latest in technology and science.</h6>
+                                <p class="text-muted small mt-1"><i class="fas fa-lightbulb me-1"></i> Key Feature:
+                                    Interactive Simulations</p>
+                            </div>
+                            <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
+                                <div class="progress">
+                                    <div class="progress-bar bg-success progress-bar-striped progress-bar-animated"
+                                        role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"
+                                        style="width: 25%">
+                                        25%
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-outline-light btn-sm mt-3 rounded-pill">Explore <i
+                                class="fas fa-flask fa-sm ms-1"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+<center><footer>
+    <hr>
+    <p>&copy; 2025 Tesla Earnings. All rights reserved.</p>
+    <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+  </footer></center>
+</body>
+
+</html>
